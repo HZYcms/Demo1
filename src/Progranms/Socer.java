@@ -15,6 +15,7 @@ public class Socer<T> { // 定义一个分数的类，里面有添加成绩，�
             if (length < maxLength) {
                 s[length] = new Students();
                 System.out.println("请输入学生姓名：");
+
                 s[length].setName(a.next());
                 System.out.println("请输入高数成绩：");
                 s[length].setMathsocer(a.nextFloat());
@@ -24,7 +25,8 @@ public class Socer<T> { // 定义一个分数的类，里面有添加成绩，�
                 s[length].setLinearscoer(a.nextFloat());
                 System.out.println("请输入体育成绩：");
                 s[length].setGymsocer(a.nextFloat());
-                s[length].setAll(s[length].mathsocer+s[length].Englishsocer+s[length].linearscoer+s[length].gymsocer);
+                s[length].setAll(s[length].getMathsocer()+s[length].getEnglishsocer()
+                        +s[length].getLinearscoer()+s[length].getGymsocer());
                 length++;
                 System.out.println("添加成功！");
             }
@@ -37,7 +39,7 @@ public class Socer<T> { // 定义一个分数的类，里面有添加成绩，�
             String number1 = a.next();
             int i, b = length;
             for(i = 0; i < length; i++) {
-                if(number1.equals(s[i].name)) {
+                if(number1.equals(s[i].getName())) {
                     b = i; break;
                 }
             }
@@ -58,8 +60,8 @@ public class Socer<T> { // 定义一个分数的类，里面有添加成绩，�
             System.out.println("*********************************************");
             System.out.println("姓名 高数     英语     线代     体育     总分");
             for(int i=0;i<100;i++) {
-                System.out.println(s[i].name+"\t"+s[i].mathsocer+"\t"+s[i].Englishsocer+"\t"+
-                  s[i].linearscoer+"\t"+s[i].gymsocer+"\t"+s[i].all);
+                System.out.println(s[i].getName()+"\t"+s[i].getMathsocer()+"\t"+s[i].getEnglishsocer()+"\t"+
+                  s[i].getLinearscoer()+"\t"+s[i].getGymsocer()+"\t"+s[i].getAll());
             }
             System.out.println("*********************************************");
             display();
@@ -69,7 +71,7 @@ public class Socer<T> { // 定义一个分数的类，里面有添加成绩，�
             String b = a.next();
             int i;
             for(i = 0; i < length; i++) {
-                if(b.equals(s[i].name)) {
+                if(b.equals(s[i].getName())) {
                     System.out.println("请输入该学生新的高数，英语，线代，体育成绩(以空格键隔开)：");
                     s[i].setMathsocer(a.nextFloat());
                     s[i].setEnglishsocer(a.nextFloat());
@@ -88,7 +90,7 @@ public class Socer<T> { // 定义一个分数的类，里面有添加成绩，�
             Students temp ;
             for(int i = 1; i < length; i++) {
                 for(int j = 0; j < length - i; j++) {
-                    if(s[j].all < s[j + 1].all) {
+                    if(s[j].getAll() < s[j + 1].getAll()) {
                         temp = s[j];
                         s[j] = s[j + 1];
                         s[j + 1]= temp;
